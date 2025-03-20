@@ -8,8 +8,13 @@ public class UserData
     public int cash; //{ get; private set; }
     public int bankBalance; //{ get; private set; }
 
-    public UserData(string userName, int cash, int BankBalance)
+    private string id;
+    private string pw;
+
+    public UserData(string id, string pw, string userName, int cash, int BankBalance)
     {
+        this.id = id;
+        this.pw = pw;
         this.userName = userName;
         this.cash = cash;
         this.bankBalance = BankBalance;

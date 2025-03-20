@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private string path = Path.Combine(Application.dataPath, "JsonFile/UserData.json");
+
     public UserData userData;
     private void Awake()
     {
@@ -15,7 +16,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            //SetUserData("김태겸", 85000, 115000);
             LoadUserData(); // UserData.json 파일을 읽어서 userData에 저장
         }
         else
@@ -24,9 +24,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetUserData(string userName, int cash, int BankBalance)
+    public void SetUserData(string id, string pw, string userName, int cash, int BankBalance)
     {
-        userData = new UserData(userName, cash, BankBalance);
+        userData = new UserData(id, pw, userName, cash, BankBalance);
         SaveUserData(); // userData를 UserData.json 파일로 저장
     }
     public void SaveUserData()
@@ -47,9 +47,8 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("저장된 파일이 없습니다.");
-            SetUserData("김태겸", 85000, 115000);
-            Debug.Log("김태겸, 85000, 115000. 으로 파일을 만듭니다.");
-
+            SetUserData("Player", 85000, 115000);
+            Debug.Log("Player, 85000, 115000. 으로 파일을 만듭니다.");
         }
     }
 }
