@@ -26,6 +26,9 @@ public class PopupBank : MonoBehaviour
     public Button depositBackButton;
     public Button withdrawBackButton;
 
+    public Button depositInputFieldButton;
+    public Button withdrawInputFieldButton;
+
     [Header("Meney")]
     public Button depositTenThousandButton;
     public Button depositThirtyThousandButton;
@@ -36,16 +39,17 @@ public class PopupBank : MonoBehaviour
     public Button withdrawFiftyThousandButton;
 
     private UserData userData;
+    private bool isDeposit;
     private void Awake()
     {
-        userData = GameManager.Instance.userData;
         depositInputField.contentType = InputField.ContentType.IntegerNumber;
         withdrawInputField.contentType = InputField.ContentType.IntegerNumber;
-
     }
 
     void Start()
     {
+        userData = GameManager.instance.userData;
+
         depositButton.onClick.AddListener(OoDepositButton);
         withdrawButton.onClick.AddListener(OoWithdrawButton);
         depositBackButton.onClick.AddListener(OnBackButton);
@@ -59,15 +63,17 @@ public class PopupBank : MonoBehaviour
         withdrawThirtyThousandButton.onClick.AddListener(OnThirtyThousandButton);
         withdrawFiftyThousandButton.onClick.AddListener(OnFiftyThousandButton);
 
+        depositInputFieldButton.onClick.AddListener(OnInputField);
+        withdrawInputFieldButton.onClick.AddListener(OnInputField);
 
         ReFresh();
     }
 
     public void ReFresh()
     {
-            userNameText.text = userData.userName;
-            cashMoneyText.text = string.Format("{0}", userData.cash.ToString("N0"));
-            bankBalanceText.text = string.Format("{0}", userData.bankBalance.ToString("N0"));
+        userNameText.text = userData.userName;
+        cashMoneyText.text = string.Format("{0}", userData.cash.ToString("N0"));
+        bankBalanceText.text = string.Format("{0}", userData.bankBalance.ToString("N0"));
     }
     
     public void OoDepositButton()
@@ -83,11 +89,13 @@ public class PopupBank : MonoBehaviour
 
     private void OnDeposit()
     {
+        isDeposit = true;
         deposit.gameObject.SetActive(true);
         withdraw.gameObject.SetActive(false);
     }
     private void OnWithdraw()
     {
+        isDeposit = false;
         deposit.gameObject.SetActive(false);
         withdraw.gameObject.SetActive(true);
     }
@@ -108,15 +116,18 @@ public class PopupBank : MonoBehaviour
 
     public void OnTenThousandButton()
     {
-        OnDepositMoney(MoneyUnit.tenThousand);
+        if(isDeposit) OnDepositMoney(MoneyUnit.tenThousand);
+        else OnWithdrawMoney(MoneyUnit.tenThousand);
     }
     public void OnThirtyThousandButton()
     {
-        OnDepositMoney(MoneyUnit.thirtyThousand);
+        if (isDeposit) OnDepositMoney(MoneyUnit.thirtyThousand);
+        else OnWithdrawMoney(MoneyUnit.thirtyThousand);
     }
     public void OnFiftyThousandButton()
     {
-        OnDepositMoney(MoneyUnit.fiftyThousand);
+        if (isDeposit) OnDepositMoney(MoneyUnit.fiftyThousand);
+        else OnWithdrawMoney(MoneyUnit.thirtyThousand);
     }
 
     public void OnDepositMoney(int money)
@@ -125,7 +136,12 @@ public class PopupBank : MonoBehaviour
         {
             userData.cash -= money;
             userData.bankBalance += money;
+            GameManager.instance.SaveUserData();
             ReFresh();
+        }
+        else
+        {
+            error.gameObject.SetActive(true);
         }
     }
     public void OnWithdrawMoney(int money)
@@ -134,19 +150,25 @@ public class PopupBank : MonoBehaviour
         {
             userData.cash += money;
             userData.bankBalance -= money;
+            GameManager.instance.SaveUserData();
             ReFresh();
+        }
+        else
+        {
+            error.gameObject.SetActive(true);
         }
     }
 
     public void OnInputField()
     {
         int money;
+
         if (int.TryParse(depositInputField.text, out money))
         {
             OnDepositMoney(money);
         }
 
-        else if(int.TryParse(withdrawInputField.text, out money))
+        else if (int.TryParse(withdrawInputField.text, out money))
         {
             OnWithdrawMoney(money);
         }
@@ -155,5 +177,5 @@ public class PopupBank : MonoBehaviour
             error.gameObject.SetActive(true);
         }
     }
-    
+
 }
