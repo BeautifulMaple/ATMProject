@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     public UserData userData;
 
-    //public List<UserData> userDataList = new List<UserData>();
-
 
     private void Awake()
     {
