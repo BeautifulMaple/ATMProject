@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 56235224}
   - component: {fileID: 56235223}
   m_Layer: 5
-  m_Name: Money
+  m_Name: CashMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1323,6 +1323,7 @@ GameObject:
   - component: {fileID: 840621950}
   - component: {fileID: 840621952}
   - component: {fileID: 840621951}
+  - component: {fileID: 840621953}
   m_Layer: 5
   m_Name: PopupBack
   m_TagString: Untagged
@@ -1391,6 +1392,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840621949}
   m_CullTransparentMesh: 1
+--- !u!114 &840621953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840621949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ef390cf75333c41ba559d9f678c103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userNameText: {fileID: 877345533}
+  cashMoneyText: {fileID: 56235223}
+  bankBalanceText: {fileID: 1639901019}
 --- !u!1 &848408930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAE40\uD0DC\uACB8"
+  m_text: "\uC131 \uBA85"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8874e4fd31a320469ae84898f70fee3, type: 2}
   m_sharedMaterial: {fileID: 3657817239620873010, guid: f8874e4fd31a320469ae84898f70fee3, type: 2}
@@ -1956,8 +1972,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a435368bbf5120148a86b4358578731c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userDataList:
-  - userName: 
+  userData:
+    userName: 
     cash: 0
     bankBalance: 0
 --- !u!4 &1471773902
@@ -2024,7 +2040,7 @@ GameObject:
   - component: {fileID: 1639901020}
   - component: {fileID: 1639901019}
   m_Layer: 5
-  m_Name: Unit
+  m_Name: Bank Banlance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

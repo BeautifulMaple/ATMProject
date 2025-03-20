@@ -1,12 +1,15 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+    public UserData userData;
 
-    public List<UserData> userDataList = new List<UserData>();
+    //public List<UserData> userDataList = new List<UserData>();
+
 
     private void Awake()
     {
@@ -14,7 +17,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            SetUserData("Player", 1000, 10000);
+            SetUserData("±èÅÂ°â", 85000, 115000);
+
         }
         else
         {
@@ -24,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void SetUserData(string userName, int cash, int BankBalance)
     {
-        userDataList.Add(new UserData(userName, cash, BankBalance));
+        userData = new UserData(userName, cash, BankBalance);
     }
+
 }
