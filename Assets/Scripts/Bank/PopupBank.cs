@@ -9,25 +9,57 @@ public class PopupBank : MonoBehaviour
     public TextMeshProUGUI cashMoneyText;
     public TextMeshProUGUI bankBalanceText;
 
-    [Header("Checking account")]
+    [Header("GameObject")]
     public GameObject atm;
     public GameObject deposit;
     public GameObject withdraw;
+    public GameObject error;
+
+    [Header("InputField")]
+    public InputField depositInputField;
+    public InputField withdrawInputField;
+
+
+    [Header("Checking account")]
     public Button depositButton;
     public Button withdrawButton;
     public Button depositBackButton;
     public Button withdrawBackButton;
 
+    [Header("Meney")]
+    public Button depositTenThousandButton;
+    public Button depositThirtyThousandButton;
+    public Button depositFiftyThousandButton;
+
+    public Button withdrawTenThousandButton;
+    public Button withdrawThirtyThousandButton;
+    public Button withdrawFiftyThousandButton;
+
     private UserData userData;
+    private void Awake()
+    {
+        userData = GameManager.Instance.userData;
+        depositInputField.contentType = InputField.ContentType.IntegerNumber;
+        withdrawInputField.contentType = InputField.ContentType.IntegerNumber;
+
+    }
 
     void Start()
     {
-        userData = GameManager.Instance.userData;
-
         depositButton.onClick.AddListener(OoDepositButton);
         withdrawButton.onClick.AddListener(OoWithdrawButton);
         depositBackButton.onClick.AddListener(OnBackButton);
         withdrawBackButton.onClick.AddListener(OnBackButton);
+
+        depositTenThousandButton.onClick.AddListener(OnTenThousandButton);
+        depositThirtyThousandButton.onClick.AddListener(OnThirtyThousandButton);
+        depositFiftyThousandButton.onClick.AddListener(OnFiftyThousandButton);
+
+        withdrawTenThousandButton.onClick.AddListener(OnTenThousandButton);
+        withdrawThirtyThousandButton.onClick.AddListener(OnThirtyThousandButton);
+        withdrawFiftyThousandButton.onClick.AddListener(OnFiftyThousandButton);
+
+
         ReFresh();
     }
 
@@ -72,6 +104,56 @@ public class PopupBank : MonoBehaviour
         {
             withdraw.gameObject.SetActive(false);
         }
-
     }
+
+    public void OnTenThousandButton()
+    {
+        OnDepositMoney(MoneyUnit.tenThousand);
+    }
+    public void OnThirtyThousandButton()
+    {
+        OnDepositMoney(MoneyUnit.thirtyThousand);
+    }
+    public void OnFiftyThousandButton()
+    {
+        OnDepositMoney(MoneyUnit.fiftyThousand);
+    }
+
+    public void OnDepositMoney(int money)
+    {
+        if (userData.cash >= money)
+        {
+            userData.cash -= money;
+            userData.bankBalance += money;
+            ReFresh();
+        }
+    }
+    public void OnWithdrawMoney(int money)
+    {
+        if (userData.bankBalance >= money)
+        {
+            userData.cash += money;
+            userData.bankBalance -= money;
+            ReFresh();
+        }
+    }
+
+    public void OnInputField()
+    {
+        int money;
+        if (int.TryParse(depositInputField.text, out money))
+        {
+            OnDepositMoney(money);
+        }
+
+        else if(int.TryParse(withdrawInputField.text, out money))
+        {
+            OnWithdrawMoney(money);
+        }
+        else
+        {
+            error.gameObject.SetActive(true);
+        }
+    }
+    
 }
