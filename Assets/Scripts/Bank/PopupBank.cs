@@ -13,6 +13,10 @@ public class PopupBank : MonoBehaviour
     public GameObject atm;
     public GameObject deposit;
     public GameObject withdraw;
+    public GameObject remittance;
+
+    public GameObject popupBank;
+    public GameObject login;
     public GameObject error;
 
     [Header("InputField")]
@@ -22,11 +26,16 @@ public class PopupBank : MonoBehaviour
     [Header("Checking account")]
     public Button depositButton;
     public Button withdrawButton;
+    public Button remittanceButton;
+
+    [Header("BackButton")]
     public Button depositBackButton;
     public Button withdrawBackButton;
 
     public Button depositInputFieldButton;
     public Button withdrawInputFieldButton;
+
+    public Button loginBackButton;
 
     [Header("Meney")]
     public Button depositTenThousandButton;
@@ -47,10 +56,12 @@ public class PopupBank : MonoBehaviour
 
     void Start()
     {
-        userData = GameManager.Instance.userData;
+        //userData = GameManager.Instance.userData;
 
         depositButton.onClick.AddListener(OoDepositButton);
         withdrawButton.onClick.AddListener(OoWithdrawButton);
+        remittanceButton.onClick.AddListener(OoRemittanceButton);
+
         depositBackButton.onClick.AddListener(OnBackButton);
         withdrawBackButton.onClick.AddListener(OnBackButton);
 
@@ -65,11 +76,15 @@ public class PopupBank : MonoBehaviour
         depositInputFieldButton.onClick.AddListener(OnInputField);
         withdrawInputFieldButton.onClick.AddListener(OnInputField);
 
+        loginBackButton.onClick.AddListener(OnBackButton);
+
         ReFresh();
     }
 
+
     public void ReFresh()
     {
+        userData = GameManager.Instance.userData;
         userNameText.text = userData.userName;
         cashMoneyText.text = string.Format("{0}", userData.cash.ToString("N0"));
         bankBalanceText.text = string.Format("{0}", userData.bankBalance.ToString("N0"));
@@ -85,6 +100,11 @@ public class PopupBank : MonoBehaviour
         atm.gameObject.SetActive(false);
         OnWithdraw();
     }
+    public void OoRemittanceButton()
+    {
+        atm.gameObject.SetActive(false);
+        remittance.gameObject.SetActive(true);
+    }
 
     private void OnDeposit()
     {
@@ -98,11 +118,8 @@ public class PopupBank : MonoBehaviour
         deposit.gameObject.SetActive(false);
         withdraw.gameObject.SetActive(true);
     }
-
     public void OnBackButton()
     {
-        atm.gameObject.SetActive(true);
-
         if (deposit.activeSelf)
         {
             deposit.gameObject.SetActive(false);
@@ -111,6 +128,14 @@ public class PopupBank : MonoBehaviour
         {
             withdraw.gameObject.SetActive(false);
         }
+        else if (login.activeSelf == false)
+        {
+            GameManager.Instance.Logout();
+            login.gameObject.SetActive(true);
+            popupBank.gameObject.SetActive(false);
+        }
+        atm.gameObject.SetActive(true);
+
     }
 
     public void OnTenThousandButton()
@@ -126,7 +151,7 @@ public class PopupBank : MonoBehaviour
     public void OnFiftyThousandButton()
     {
         if (isDeposit) OnDepositMoney(MoneyUnit.fiftyThousand);
-        else OnWithdrawMoney(MoneyUnit.thirtyThousand);
+        else OnWithdrawMoney(MoneyUnit.fiftyThousand);
     }
 
     public void OnDepositMoney(int money)
@@ -162,19 +187,22 @@ public class PopupBank : MonoBehaviour
     {
         int money;
 
-        if (int.TryParse(depositInputField.text, out money))
+        if (isDeposit)
         {
-            OnDepositMoney(money);
-        }
-
-        else if (int.TryParse(withdrawInputField.text, out money))
-        {
-            OnWithdrawMoney(money);
+            if (int.TryParse(depositInputField.text, out money))
+            {
+                OnDepositMoney(money);
+            }
         }
         else
         {
-            error.gameObject.SetActive(true);
+            if (int.TryParse(withdrawInputField.text, out money))
+            {
+                OnWithdrawMoney(money);
+            }
         }
+
+        error.gameObject.SetActive(true);
     }
 
 }

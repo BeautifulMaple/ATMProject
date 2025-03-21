@@ -59,4 +59,15 @@ public class GameManager : MonoBehaviour
             userDataList = new List<UserData>(); // 빈 리스트 초기화
         }
     }
+    public void Logout()
+    {
+        Debug.Log($"로그아웃: {userData?.userName}");
+        userData = null;
+    }
+
+    public bool SetCurrentUser(string id, string pw)
+    {
+        userData = userDataList.Find(user => user.id == id && user.pw == pw);
+        return userData != null;
+    }
 }

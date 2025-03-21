@@ -36,7 +36,6 @@ public class PopupSignUp : MonoBehaviour
     // Update is called once per frame
     public void OnSignUP()
     {
-
         if (signUpID.text == "")
         {
             ShowError("아이디를 입력해주세요.");
