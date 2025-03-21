@@ -5,26 +5,46 @@ using UnityEditor.PackageManager;
 public class Deposit : MonoBehaviour
 {
 
+    public InputField depositInputField;
+
     [Header("Meney")]
     public Button depositTenThousandButton;
     public Button depositThirtyThousandButton;
     public Button depositFiftyThousandButton;
-    public InputField depositInputField;
+
+    public Button backButton;
+
     public Button depositInputFieldButton;
+
+    [Header("Object")]
+    public GameObject atm;                  // 송금, 임금, 출금
+    public GameObject depositObject;
+    public GameObject error;
 
     private UserData userData;
     private PopupBank popupBank;
+    private void Awake()
+    {
+        depositInputField.contentType = InputField.ContentType.IntegerNumber;
+    }
 
     private void Start()
     {
         userData = GameManager.Instance.userData;
-        popupBank = gameObject.GetComponent<PopupBank>();
+        popupBank = FindObjectOfType<PopupBank>(); // FindObjectOfType를 사용하여 PopupBank 인스턴스를 찾습니다.
+        
         depositTenThousandButton.onClick.AddListener(OnTenThousandButton);
         depositThirtyThousandButton.onClick.AddListener(OnThirtyThousandButton);
         depositFiftyThousandButton.onClick.AddListener(OnFiftyThousandButton);
 
-        depositInputFieldButton.onClick.AddListener(OnInputField);
+        backButton.onClick.AddListener(OnBackButton);
 
+        depositInputFieldButton.onClick.AddListener(OnInputField);
+    }
+    public void OnBackButton()
+    {
+        depositObject.gameObject.SetActive(false);
+        atm.gameObject.SetActive(true);
     }
 
     public void OnTenThousandButton()
@@ -46,11 +66,12 @@ public class Deposit : MonoBehaviour
         {
             userData.cash -= money;
             userData.bankBalance += money;
+            GameManager.Instance.SaveUserData();
             popupBank.ReFresh();
         }
         else
         {
-            popupBank.error.gameObject.SetActive(true);
+            error.gameObject.SetActive(true);
         }
     }
     public void OnInputField()
@@ -60,5 +81,6 @@ public class Deposit : MonoBehaviour
         {
             OnDepositMoney(money);
         }
+        error.gameObject.SetActive(true);
     }
 }

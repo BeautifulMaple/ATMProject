@@ -41,7 +41,7 @@ public class PopupLogin : MonoBehaviour
             {
                 GameManager.Instance.SetCurrentUser(user.id, user.pw); // 현재 로그인한 유저 설정
                 popupLogin.SetActive(false);
-                popupBank.SetActive(true);
+                //popupBank.SetActive(true);
                 popupBankScript.ReFresh(); // 로그인 후 UI 업데이트
                 return;
             }

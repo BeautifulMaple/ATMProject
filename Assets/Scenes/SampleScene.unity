@@ -1947,6 +1947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207081654}
   - component: {fileID: 207081655}
+  - component: {fileID: 207081656}
   m_Layer: 0
   m_Name: Withdraw
   m_TagString: Untagged
@@ -2005,6 +2006,27 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &207081656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207081653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2decaa102f24f4fafafca7c3d9293c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  withdrawInputField: {fileID: 368184652}
+  withdrawTenThousandButton: {fileID: 1729011293}
+  withdrawThirtyThousandButton: {fileID: 35406017}
+  withdrawFiftyThousandButton: {fileID: 1898582158}
+  backButton: {fileID: 1176419061}
+  withdrawInputFieldButton: {fileID: 408565338}
+  atm: {fileID: 1334936816}
+  withdrawObject: {fileID: 207081653}
+  error: {fileID: 1159791285}
 --- !u!1 &212410811
 GameObject:
   m_ObjectHideFlags: 0
@@ -7297,23 +7319,10 @@ MonoBehaviour:
   remittance: {fileID: 2113192112}
   popupBank: {fileID: 840621949}
   login: {fileID: 953739378}
-  error: {fileID: 1159791285}
-  depositInputField: {fileID: 1800487998}
-  withdrawInputField: {fileID: 368184652}
   depositButton: {fileID: 54529305}
   withdrawButton: {fileID: 996720139}
   remittanceButton: {fileID: 1341097832}
-  depositBackButton: {fileID: 247552840}
-  withdrawBackButton: {fileID: 1176419061}
-  depositInputFieldButton: {fileID: 1758382248}
-  withdrawInputFieldButton: {fileID: 408565338}
   loginBackButton: {fileID: 1583540133}
-  depositTenThousandButton: {fileID: 449765879}
-  depositThirtyThousandButton: {fileID: 1962955633}
-  depositFiftyThousandButton: {fileID: 1972295546}
-  withdrawTenThousandButton: {fileID: 1729011293}
-  withdrawThirtyThousandButton: {fileID: 35406017}
-  withdrawFiftyThousandButton: {fileID: 1898582158}
 --- !u!1 &848408930
 GameObject:
   m_ObjectHideFlags: 0
@@ -8062,7 +8071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &953739379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11018,6 +11027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246022844}
   - component: {fileID: 1246022845}
+  - component: {fileID: 1246022846}
   m_Layer: 0
   m_Name: Deposit
   m_TagString: Untagged
@@ -11076,6 +11086,27 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1246022846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246022843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c279891393f98d4438db0bec22ed8c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depositInputField: {fileID: 1800487998}
+  depositTenThousandButton: {fileID: 449765879}
+  depositThirtyThousandButton: {fileID: 1962955633}
+  depositFiftyThousandButton: {fileID: 1972295546}
+  backButton: {fileID: 247552840}
+  depositInputFieldButton: {fileID: 1758382248}
+  atm: {fileID: 1334936816}
+  depositObject: {fileID: 1246022843}
+  error: {fileID: 1159791285}
 --- !u!1 &1261228432
 GameObject:
   m_ObjectHideFlags: 0
