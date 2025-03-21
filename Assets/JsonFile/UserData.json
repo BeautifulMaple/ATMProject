@@ -1,5 +1,7 @@
 {
-    "userName": "김태겸",
-    "cash": 35000,
-    "bankBalance": 165000
+    "id": "test1",
+    "pw": "1231",
+    "userName": "player",
+    "cash": 0,
+    "bankBalance": 0
 }

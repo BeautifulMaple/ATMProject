@@ -47,8 +47,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("저장된 파일이 없습니다.");
-            SetUserData("Player", 85000, 115000);
-            Debug.Log("Player, 85000, 115000. 으로 파일을 만듭니다.");
         }
     }
 }

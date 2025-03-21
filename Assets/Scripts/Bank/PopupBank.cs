@@ -19,7 +19,6 @@ public class PopupBank : MonoBehaviour
     public InputField depositInputField;
     public InputField withdrawInputField;
 
-
     [Header("Checking account")]
     public Button depositButton;
     public Button withdrawButton;
