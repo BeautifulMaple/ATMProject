@@ -79,7 +79,6 @@ public class Remittance : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 
