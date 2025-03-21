@@ -1006,8 +1006,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5517,7 +5517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &840621950
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6226,7 +6226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &953739379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9865,12 +9865,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a435368bbf5120148a86b4358578731c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userDataList: []
   userData:
+    id: 
+    pw: 
     userName: 
     cash: 0
     bankBalance: 0
-    id: 
-    pw: 
 --- !u!4 &1471773902
 Transform:
   m_ObjectHideFlags: 0

@@ -17,11 +17,8 @@ public class PopupLogin : MonoBehaviour
     public GameObject popupSignUp;
     public GameObject popupBank;
 
-    private UserData userData;
-    // Start is called before the first frame update
     void Start()
     {
-        userData = GameManager.instance.userData;
 
         loginPW.contentType = TMP_InputField.ContentType.Password;
 
@@ -32,18 +29,19 @@ public class PopupLogin : MonoBehaviour
 
     public void OnLogin()
     {
-
-        //ID, PW 입력값이 유저 정보와 맞을 경우
-        if (userData.id == loginID.text && userData.pw == loginPW.text)
+        foreach (UserData user in GameManager.Instance.userDataList)
         {
-            popupLogin.SetActive(false);
-            GameManager.instance.LoadUserData();
-            popupBank.SetActive(true);
+            //ID, PW 입력값이 유저 정보와 맞을 경우
+            if (user.id == loginID.text && user.pw == loginPW.text
+            && loginID.text != "" && loginPW.text != "")
+            {
+                GameManager.Instance.userData = user; // 현재 로그인한 유저 저장
+                popupLogin.SetActive(false);
+                GameManager.Instance.LoadUserData();
+                popupBank.SetActive(true);
+            }
         }
-        else
-        {
             Debug.Log("아이디 또는 비밀번호가 틀렸습니다.");
-        }
     }
     public void OnSignUp()
     {

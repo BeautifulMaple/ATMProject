@@ -47,7 +47,7 @@ public class PopupBank : MonoBehaviour
 
     void Start()
     {
-        userData = GameManager.instance.userData;
+        userData = GameManager.Instance.userData;
 
         depositButton.onClick.AddListener(OoDepositButton);
         withdrawButton.onClick.AddListener(OoWithdrawButton);
@@ -135,7 +135,7 @@ public class PopupBank : MonoBehaviour
         {
             userData.cash -= money;
             userData.bankBalance += money;
-            GameManager.instance.SaveUserData();
+            GameManager.Instance.SaveUserData();
             ReFresh();
         }
         else
@@ -149,7 +149,7 @@ public class PopupBank : MonoBehaviour
         {
             userData.cash += money;
             userData.bankBalance -= money;
-            GameManager.instance.SaveUserData();
+            GameManager.Instance.SaveUserData();
             ReFresh();
         }
         else

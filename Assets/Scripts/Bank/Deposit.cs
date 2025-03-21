@@ -17,7 +17,7 @@ public class Deposit : MonoBehaviour
 
     private void Start()
     {
-        userData = GameManager.instance.userData;
+        userData = GameManager.Instance.userData;
         popupBank = gameObject.GetComponent<PopupBank>();
         depositTenThousandButton.onClick.AddListener(OnTenThousandButton);
         depositThirtyThousandButton.onClick.AddListener(OnThirtyThousandButton);

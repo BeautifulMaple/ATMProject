@@ -1,7 +1,9 @@
-{
-    "id": "test1",
-    "pw": "1231",
-    "userName": "player",
+[
+  {
+    "id": "test",
+    "pw": "11",
+    "userName": "asd",
     "cash": 0,
     "bankBalance": 0
-}
+  }
+]

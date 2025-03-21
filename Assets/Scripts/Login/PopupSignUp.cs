@@ -22,7 +22,6 @@ public class PopupSignUp : MonoBehaviour
     public Button signUpButton;
     public Button cancelButton;
 
-    private UserData userData;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,55 +36,69 @@ public class PopupSignUp : MonoBehaviour
     // Update is called once per frame
     public void OnSignUP()
     {
-        if(signUpID.text == "")
+
+        if (signUpID.text == "")
         {
-            errorText.gameObject.SetActive(true);
-            errorText.text = "아이디를 입력해주세요.";
-            signUpErrorText.gameObject.SetActive(true);
+            ShowError("아이디를 입력해주세요.");
             return;
         }
+        if (IsIDDuplicate(signUpID.text))
+        {
+            ShowError("아이디가 중복됩니다.");
+            return;
+        }
+
         if (signUpName.text == "")
         {
-            errorText.gameObject.SetActive(true);
-            errorText.text = "이름을 입력해주세요.";
-            signUpErrorText.gameObject.SetActive(true);
+            ShowError("이름을 입력해주세요.");
             return;
         }
         if (signUpPW.text == "")
         {
-            errorText.gameObject.SetActive(true);
-            errorText.text = "비밀번호를 입력해주세요.";
-            signUpErrorText.gameObject.SetActive(true);
+            ShowError("비밀번호를 입력해주세요.");
             return;
         }
         if (signUpPWCheck.text == "")
         {
-            errorText.gameObject.SetActive(true);
-            errorText.text = "비밀번호 확인을 입력해주세요.";
-            signUpErrorText.gameObject.SetActive(true);
+            ShowError("비밀번호 확인을 입력해주세요.");
             return;
         }
         if (signUpPW.text != signUpPWCheck.text)
         {
-            errorText.gameObject.SetActive(true);
-            errorText.text = "비밀번호가 일치하지 않습니다.";
-            signUpErrorText.gameObject.SetActive(true);
+            ShowError("비밀번호가 일치하지 않습니다.");
             return;
         }
 
-        userData = new UserData(signUpID.text, signUpPW.text, signUpName.text, 0, 0);
-
         // GameManager에 있는 userData에 저장
-        GameManager.instance.userData = userData;
-        GameManager.instance.SaveUserData();
+        GameManager.Instance.AddUserData(signUpID.text, signUpPW.text, signUpName.text, 0, 0);
+        GameManager.Instance.SaveUserData();
 
         errorText.gameObject.SetActive(false);
-
         popupSignUp.SetActive(false);
     }
 
     public void OnCancel()
     {
         popupSignUp.SetActive(false);
+    }
+
+    // 에러 메시지 표시 메서드 추가
+    private void ShowError(string message)
+    {
+        errorText.gameObject.SetActive(true);
+        errorText.text = message;
+        signUpErrorText.gameObject.SetActive(true);
+    }
+
+    private bool IsIDDuplicate(string id)
+    {
+        foreach (UserData user in GameManager.Instance.GetUserDataList())
+        {
+            if (user.id == id)
+            {
+                return true;    //  중복되는 아이디가 있을 경우
+            }
+        }
+        return false;   // 중복되는 아이디가 없을 경우
     }
 }
