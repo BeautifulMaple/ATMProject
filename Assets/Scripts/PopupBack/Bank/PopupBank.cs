@@ -66,15 +66,7 @@ public class PopupBank : MonoBehaviour
     
     public void OnBackButton()
     {
-        if (deposit.activeSelf)
-        {
-            deposit.gameObject.SetActive(false);
-        }
-        else if (withdraw.activeSelf)
-        {
-            withdraw.gameObject.SetActive(false);
-        }
-        else if (login.activeSelf == false)
+        if (login.activeSelf == false)
         {
             GameManager.Instance.Logout();
             login.gameObject.SetActive(true);
