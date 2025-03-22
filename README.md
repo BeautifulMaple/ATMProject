@@ -1,8 +1,8 @@
-# 🏰 DungeonEscape
+# 🏰 ATM Project
  
 ## 프로젝트 소개
 ### 간단한 ATM 
-![전체 영상 (1)](https://github.com/user-attachments/assets/c3aa8174-2c1f-4ec5-ad74-50c318e7436d)
+ [ 동영상 추가 하기 ]
 
 ## 📌 프로젝트 정보  
 - **제작자**: 김태겸  
