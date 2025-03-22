@@ -35,6 +35,8 @@ public class Remittance : MonoBehaviour
 
         remittanceButton.onClick.AddListener(OnRemittance);
         backButton.onClick.AddListener(OnBackButton);
+
+        popupBank.ReFresh();
     }
 
     public void OnRemittance()
@@ -84,6 +86,8 @@ public class Remittance : MonoBehaviour
 
     private void OnRemittanceCode(int money)
     {
+        userData = GameManager.Instance.userData;
+
         // 价陛 贸府 肺流
         userData.bankBalance -= money;
         foreach (UserData user in GameManager.Instance.userDataList)

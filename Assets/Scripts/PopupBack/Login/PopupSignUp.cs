@@ -22,9 +22,12 @@ public class PopupSignUp : MonoBehaviour
     public Button signUpButton;
     public Button cancelButton;
 
+    public PopupBank popupBank;
     // Start is called before the first frame update
     void Start()
     {
+        popupBank = FindObjectOfType<PopupBank>(); // FindObjectOfType를 사용하여 PopupBank 인스턴스를 찾습니다.
+
         // 입력 시 ***로 표시
         signUpPW.contentType = TMP_InputField.ContentType.Password;
         signUpPWCheck.contentType = TMP_InputField.ContentType.Password;
@@ -71,6 +74,7 @@ public class PopupSignUp : MonoBehaviour
         // GameManager에 있는 userData에 저장
         GameManager.Instance.AddUserData(signUpID.text, signUpPW.text, signUpName.text, 0, 0);
         GameManager.Instance.SaveUserData();
+        popupBank.ReFresh();
 
         errorText.gameObject.SetActive(false);
         popupSignUp.SetActive(false);

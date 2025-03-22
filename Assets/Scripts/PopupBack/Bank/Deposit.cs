@@ -27,12 +27,11 @@ public class Deposit : MonoBehaviour
     {
         depositInputField.contentType = InputField.ContentType.IntegerNumber;
     }
-
     private void Start()
     {
         userData = GameManager.Instance.userData;
         popupBank = FindObjectOfType<PopupBank>(); // FindObjectOfType를 사용하여 PopupBank 인스턴스를 찾습니다.
-        
+
         depositTenThousandButton.onClick.AddListener(OnTenThousandButton);
         depositThirtyThousandButton.onClick.AddListener(OnThirtyThousandButton);
         depositFiftyThousandButton.onClick.AddListener(OnFiftyThousandButton);
@@ -40,11 +39,15 @@ public class Deposit : MonoBehaviour
         backButton.onClick.AddListener(OnBackButton);
 
         depositInputFieldButton.onClick.AddListener(OnInputField);
+
+        popupBank.ReFresh();
+
     }
     public void OnBackButton()
     {
         depositObject.gameObject.SetActive(false);
         atm.gameObject.SetActive(true);
+        popupBank.ReFresh();
     }
 
     public void OnTenThousandButton()
@@ -62,6 +65,10 @@ public class Deposit : MonoBehaviour
 
     public void OnDepositMoney(int money)
     {
+        userData = GameManager.Instance.userData;
+
+        Debug.Log($" 유저 정보 - ID: {userData.id}, UserName: {userData.userName}, Cash: {userData.cash}, BankBalance: {userData.bankBalance}");
+
         if (userData.cash >= money)
         {
             userData.cash -= money;

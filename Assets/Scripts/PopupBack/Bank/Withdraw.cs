@@ -42,6 +42,9 @@ public class Withdraw : MonoBehaviour
         backButton.onClick.AddListener(OnBackButton);
 
         withdrawInputFieldButton.onClick.AddListener(OnInputField);
+
+                    popupBank.ReFresh();
+
     }
     public void OnBackButton()
     {
@@ -64,6 +67,8 @@ public class Withdraw : MonoBehaviour
 
     public void OnWithdrawMoney(int money)
     {
+        userData = GameManager.Instance.userData;
+
         if (userData.bankBalance >= money)
         {
             userData.cash += money;
@@ -83,6 +88,5 @@ public class Withdraw : MonoBehaviour
         {
             OnWithdrawMoney(money);
         }
-        //error.gameObject.SetActive(true);
     }
 }

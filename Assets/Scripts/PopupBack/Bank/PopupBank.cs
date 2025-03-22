@@ -68,7 +68,7 @@ public class PopupBank : MonoBehaviour
     {
         if (login.activeSelf == false)
         {
-            GameManager.Instance.Logout();
+            //GameManager.Instance.Logout();
             login.gameObject.SetActive(true);
             popupBank.gameObject.SetActive(false);
         }

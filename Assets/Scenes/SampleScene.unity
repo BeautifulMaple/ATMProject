@@ -6658,6 +6658,7 @@ MonoBehaviour:
   signUpErrorText: {fileID: 1949417074}
   signUpButton: {fileID: 285499494}
   cancelButton: {fileID: 254590943}
+  popupBank: {fileID: 0}
 --- !u!1 &823880546
 GameObject:
   m_ObjectHideFlags: 0

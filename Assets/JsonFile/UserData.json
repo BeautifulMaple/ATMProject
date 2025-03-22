@@ -3,14 +3,14 @@
     "id": "test",
     "pw": "11",
     "userName": "asd",
-    "cash": 1101976,
-    "bankBalance": 4348024
+    "cash": 400000,
+    "bankBalance": 1600000
   },
   {
-    "id": "Test11",
-    "pw": "123",
-    "userName": "Player",
+    "id": "11",
+    "pw": "11",
+    "userName": "11",
     "cash": 0,
-    "bankBalance": 50000
+    "bankBalance": 0
   }
 ]
