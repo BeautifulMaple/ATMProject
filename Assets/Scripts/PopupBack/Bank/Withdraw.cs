@@ -83,6 +83,6 @@ public class Withdraw : MonoBehaviour
         {
             OnWithdrawMoney(money);
         }
-        error.gameObject.SetActive(true);
+        //error.gameObject.SetActive(true);
     }
 }

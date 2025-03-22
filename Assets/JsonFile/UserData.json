@@ -3,28 +3,14 @@
     "id": "test",
     "pw": "11",
     "userName": "asd",
-    "cash": 810000,
-    "bankBalance": 4189877
+    "cash": 1101976,
+    "bankBalance": 4348024
   },
   {
-    "id": "Maple",
-    "pw": "123",
-    "userName": "Maple",
-    "cash": 0,
-    "bankBalance": 1000123
-  },
-  {
-    "id": "Maple1",
-    "pw": "123",
-    "userName": "111",
-    "cash": 0,
-    "bankBalance": 0
-  },
-  {
-    "id": "test45",
+    "id": "Test11",
     "pw": "123",
     "userName": "Player",
     "cash": 0,
-    "bankBalance": 0
+    "bankBalance": 50000
   }
 ]

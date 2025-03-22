@@ -81,6 +81,5 @@ public class Deposit : MonoBehaviour
         {
             OnDepositMoney(money);
         }
-        error.gameObject.SetActive(true);
     }
 }
