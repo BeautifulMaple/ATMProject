@@ -26,4 +26,4 @@ https://github.com/user-attachments/assets/e5f68a69-6b98-4a12-83d8-0517ff1e34c1
    - 다운로드한 ZIP 파일을 원하는 폴더에 압축 해제합니다.  
 
 3️⃣ **게임 실행**  
-   - `DungeonEscape.exe` 파일을 실행하면 게임이 시작됩니다. 
+   - `ATM Project.exe` 파일을 실행하면 게임이 시작됩니다. 
