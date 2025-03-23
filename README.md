@@ -31,6 +31,8 @@ https://github.com/user-attachments/assets/d4eead4c-3558-4105-b83f-08547c109e00
 
 - 가입된 아이디와 비밀번호를 입력하면 로그인 가능
 
+---
+
 ### 입금 / 출금 / 송금
 
 https://github.com/user-attachments/assets/c837f0d1-da02-4bf7-94ca-f4c4c3b564c8
@@ -43,6 +45,8 @@ https://github.com/user-attachments/assets/c837f0d1-da02-4bf7-94ca-f4c4c3b564c8
 - 수취인 이름이 입력되지 않으면 송금 불가
 - 존재하지 않는 회원에게 송금 불가
 - 직접 금액을 입력하여 송금 가능
+
+---
 
 ### 회원 저장
 ![image](https://github.com/user-attachments/assets/2dee6c4b-db53-4fc2-98c2-2eb17735a2cd)
