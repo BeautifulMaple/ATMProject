@@ -15,7 +15,26 @@ https://github.com/user-attachments/assets/e5f68a69-6b98-4a12-83d8-0517ff1e34c1
 
 ## 🚀 주요 기능  
 
+### 로그인  / 회원가입
 
+
+https://github.com/user-attachments/assets/d4eead4c-3558-4105-b83f-08547c109e00
+
+- 유저의 아이디, 이름, 비밀번호, 비밀번호 확인을 통해서 회원가입을 진행
+- 유저의 정보 기입이 안 되어 있으면 알림 창을 띄움
+  - ex) 비밀번호와 비밀번호 확인이 다를 경우 비밀번호가 맞지 않습니다 문구를 보임
+
+### 입금
+
+### 출금
+
+### 송금
+
+### 회원 저장
+![image](https://github.com/user-attachments/assets/2dee6c4b-db53-4fc2-98c2-2eb17735a2cd)
+- 회원가입을 통해서 유저의 정보를 저장합니다.
+- Newtonsoft.Json를 통해서 Json파일 형태로 저장합니다.
+  
 ## 🔧 설치 및 실행 방법  
 
 1️⃣ **게임 다운로드**  
