@@ -3,13 +3,27 @@
     "id": "test",
     "pw": "11",
     "userName": "asd",
-    "cash": 400000,
-    "bankBalance": 1600000
+    "cash": 500000,
+    "bankBalance": 400000
   },
   {
     "id": "11",
     "pw": "11",
     "userName": "11",
+    "cash": 0,
+    "bankBalance": 100000
+  },
+  {
+    "id": "ID",
+    "pw": "123",
+    "userName": "ID",
+    "cash": 100000,
+    "bankBalance": 900000
+  },
+  {
+    "id": "Test11",
+    "pw": "123",
+    "userName": "kim",
     "cash": 0,
     "bankBalance": 0
   }
