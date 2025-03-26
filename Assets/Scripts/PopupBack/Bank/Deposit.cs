@@ -20,7 +20,7 @@ public class Deposit : MonoBehaviour
     public GameObject depositObject;
     public GameObject error;
 
-    private UserData userData;
+    private UserData userData => GameManager.Instance.userData;
     private PopupBank popupBank;
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class Deposit : MonoBehaviour
     }
     private void Start()
     {
-        userData = GameManager.Instance.userData;
+        //userData = GameManager.Instance.userData;
         popupBank = FindObjectOfType<PopupBank>(); // FindObjectOfType를 사용하여 PopupBank 인스턴스를 찾습니다.
 
         depositTenThousandButton.onClick.AddListener(OnTenThousandButton);
@@ -42,6 +42,11 @@ public class Deposit : MonoBehaviour
         popupBank.ReFresh();
 
     }
+
+    //private void OnEnable() // 활성화 될 때 마다
+    //{
+    //    userData = GameManager.Instance.userData;
+    //}
     public void OnBackButton()
     {
         depositObject.gameObject.SetActive(false);
@@ -64,7 +69,7 @@ public class Deposit : MonoBehaviour
 
     public void OnDepositMoney(int money)
     {
-        userData = GameManager.Instance.userData;
+        //userData = GameManager.Instance.userData;     // 주소값 참조
 
         Debug.Log($" 유저 정보 - ID: {userData.id}, UserName: {userData.userName}, Cash: {userData.cash}, BankBalance: {userData.bankBalance}");
 

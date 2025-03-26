@@ -25,7 +25,6 @@ public class Withdraw : MonoBehaviour
     private void Awake()
     {
         withdrawInputField.contentType = InputField.ContentType.IntegerNumber;
-
     }
     // Start is called before the first frame update
     void Start()
@@ -44,12 +43,11 @@ public class Withdraw : MonoBehaviour
                     popupBank.ReFresh();
 
     }
-    public void OnBackButton()
+    public void OnBackButton()  // 뒤로가기 버튼
     {
         withdrawObject.gameObject.SetActive(false);
         atm.gameObject.SetActive(true);
     }
-
     public void OnTenThousandButton()
     {
         OnWithdrawMoney(MoneyUnit.tenThousand);
@@ -62,10 +60,14 @@ public class Withdraw : MonoBehaviour
     {
         OnWithdrawMoney(MoneyUnit.fiftyThousand);
     }
-
-    public void OnWithdrawMoney(int money)
+    private void OnEnable()
     {
         userData = GameManager.Instance.userData;
+
+    }
+    public void OnWithdrawMoney(int money)
+    {
+        //userData = GameManager.Instance.userData;
 
         if (userData.bankBalance >= money)
         {
